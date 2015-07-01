@@ -1,0 +1,19 @@
+<!-- This file is a Jinja template -->
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    {% if title %} <!-- Control statement. if title exists then put it there -->
+	<title>{{ title }} - microblog</title>
+    {% else %} <!-- Otherwise, put a default title -->
+    <title>Welcome to microblog</title>
+    {% endif %}
+  </head>
+  <body>
+	<h1>Hello, {{ user.nickname }}!</h1>
+	  {% for post in posts %} <!-- A foreach loop -->
+	  <div><p>{{ post.author.nickname }} says: <b>{{ post.body }}</b></p></div>
+	  {% endfor %}
+  </body>
+</html>
