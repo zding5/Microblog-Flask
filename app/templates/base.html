@@ -12,6 +12,24 @@
   <body>
     <div>Microblog: <a href="/index">Home</a></div>
     <hr>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }} </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <!-- Use get_flashed_messages() to get and then display quick message. -->
+
     {% block content %}{% endblock %}
+    <!-- This is the place where child templates can fill in.
+
+    {% block name %}{% endblock %}
+    
+    Then you have the same name in child templates.
+
+    -->
   </body>
 </html>
