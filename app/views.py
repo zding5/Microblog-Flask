@@ -5,14 +5,22 @@
 
 from app import myapp
 # I don't know why you can just find myapp in app package...???
+from app import db, lm, oid
+# Import db object, login manager object and open id from app
+
 from flask import render_template
 # This is for render Jinja templates
 from flask import flash 
 # This is for showing quick message
 from flask import redirect
 # This is to redirect window to another page
+from flask.ext.login import login_user, logout_user, current_user, login_required
+# Import a bunch of login related params form flask login
+
 from .forms import LoginForm 
 # This is the class for loginform
+from .models import User
+# Import User class from models.py
 
 @myapp.route('/')
 @myapp.route('/index')
@@ -34,6 +42,7 @@ def index():
 # Now let's handle login form!
 @myapp.route('/login', methods=['GET', 'POST'])
 # Tell Flask that only GET or POST are accepted
+@oid.loginhandler # ???
 def login():
     form = LoginForm() 
     # Create a loginform I think...
@@ -59,7 +68,11 @@ def login():
                             # getting openid providers form config.py
                             )
 
-
+@lm.user_loader
+# This callback is used to reload the user object from the user ID stored in the session.
+def load_user(id):
+    return User.query.get(int(id))
+    # Convert id from unicode to int for lm.user_loader only takes in int.
 
 
 
