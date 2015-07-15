@@ -1,10 +1,11 @@
 # This file is for defining database models
+# SQLAlchemy is ORM (Object Relational Mapper) which associates python classes with tables, and instances of the classes with rows in tables.
 
 from app import db
 # Import variable db from app package. (in __init__.py)
 
 class User(db.Model):
-	# Class User based on db.Model class ???
+	# Class User based on db.Model, which is basically a declarative base class for ORM ...
 	id = db.Column(db.Integer, primary_key=True)
 	nickname = db.Column(db.String(64), index=True, unique=True)
 	email = db.Column(db.String(120), index=True, unique=True)
@@ -20,7 +21,7 @@ class User(db.Model):
 		# Return True unless the object represents a user that should not be allowed to authenticate for some reason.
 		return True
 
-	def is_activate(self):
+	def is_active(self):
 		# Return True for users unless they are inactive (say banned)
 		return True
 
@@ -37,6 +38,7 @@ class User(db.Model):
 	def __repr__(self):
 		return '<User %r>' % (self.nickname)
 	# Tells python how to print objects of class User
+
 
 class Post(db.Model):
 	# Class Post. For posts.

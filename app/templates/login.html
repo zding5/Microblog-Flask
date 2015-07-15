@@ -25,14 +25,19 @@
       {{ form.hidden_tag() }} 
       <!-- form.hidden_tag() will get replaced with a hidden field that implements the CSRF prevention that we enabled in the configuration. -->
       <p>
-          Please enter your OpenID:<br>
+          Please enter your OpenID, or select one of the providers below:<br>
           {{ form.openid(size=80) }}<br>
 
           {% for error in form.openid.errors %}
             <span style="color: red;">[{{ error }}]</span>
           {% endfor %}<br>
           <!-- For showing what error is with the form. -->
+        
+          |{% for pr in providers %}
+            <a href="javascript:set_openid('{{ pr.url }}', '{{ pr.name }}');">{{ pr.name }}</a> |
+          {% endfor %}
       </p>
+
       <p>{{ form.remember_me }} Remember Me</p>
       <p><input type="submit" value="Sign In"></p>
   </form>

@@ -20,10 +20,14 @@ myapp.config.from_object('config')
 
 db = SQLAlchemy(myapp)
 # Create our database object
+# sqlalchemy api object is a big wrap of db basics I think ... ??? Including engine, session and etc.
 
 lm = LoginManager()
 # User Login handler
 lm.init_app(myapp)
+lm.login_view = 'login' 
+# Name of the login_view for ... ???
+
 oid = OpenID(myapp, os.path.join(basedir, 'tmp'))
 # The Flask-OpenID extension requires a path to a temp folder where files can be stored.
 
