@@ -35,10 +35,16 @@ from models import Post
 from datetime import datetime
 # datetime datatype
 
+from config import POSTS_PER_PAGE
+
 @myapp.route('/', methods=['GET', 'POST'])
 @myapp.route('/index', methods=['GET', 'POST'])
+
+@myapp.route('/index/<int:page>', methods=['GET', 'POST'])
+# For routing to different pages.
+
 @login_required # Insure this page is only viewable by logged in users.
-def index():
+def index(page=1):# page by default is set to 1.
 
     form = PostForm()
     # A postform object for submitting posts.
@@ -52,9 +58,10 @@ def index():
         # This is for when user refresh the page.
         # Refresh submits the last request, so if we don't for redirect, when refreshing, it will submit the same form again !!!
 
-    posts = g.user.followed_posts().all()
+    posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False)
     # get posts from db.
-    # Calling all() on this query just retrieves all the posts into a list.
+    # The paginate method can be called on any query object. It takes three arguments:
+    # page number, number of items per page, error flag.
 
     return render_template('index.html', title='Home', form=form, posts=posts)
     # Render Jinja template with parameters.
@@ -157,15 +164,12 @@ def logout():
 @myapp.route('/user/<nickname>')
 @login_required
 # For certain user personal page.
-def user(nickname):
+def user(nickname, page=1):
     user = User.query.filter_by(nickname=nickname).first()
     if user == None:
         flash('User %s not found.' % nickname)
         return redirect(url_for('index'))
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-    ]
+    posts = user.posts.paginate(page, POSTS_PER_PAGE, False)
     return render_template('user.html', user=user, posts=posts)
 
 
