@@ -52,11 +52,11 @@ def index():
         # This is for when user refresh the page.
         # Refresh submits the last request, so if we don't for redirect, when refreshing, it will submit the same form again !!!
 
-        posts = g.user.followed_posts().all()
-        # get posts from db.
-        # Calling all() on this query just retrieves all the posts into a list.
+    posts = g.user.followed_posts().all()
+    # get posts from db.
+    # Calling all() on this query just retrieves all the posts into a list.
 
-    return render_template('index.html', title='Home', user=user, posts=posts)
+    return render_template('index.html', title='Home', form=form, posts=posts)
     # Render Jinja template with parameters.
 
 
@@ -120,6 +120,7 @@ def after_login(resp):
     user = User.query.filter_by(email=resp.email).first()
     if user is None:
     # Create new user if it doesn't exist.
+        flash('Good, a user!')
         nickname = resp.nickname
         if nickname is None or nickname == "":
             nickname = resp.email.split('@')[0]

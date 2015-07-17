@@ -1,0 +1,4 @@
+# no .tmp or .pyc file
+
+*.tmp
+*.pyc

@@ -103,7 +103,7 @@ class User(db.Model):
 
 	def is_following(self, user):
 		return self.followed.filter(followers.c.followed_id == user.id).count()>0
-		# Find all users who 
+		# ??? 
 
 	def followed_posts(self):
 		return Post.query.join(followers, \
