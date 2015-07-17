@@ -24,3 +24,25 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 # Path of our database file
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 # Folder for our migrate data files
+
+## mail server settings
+MAIL_SERVER = 'localhost'
+MAIL_PORT = 25
+MAIL_USERNAME = None
+MAIL_PASSWORD = None
+# administrator list
+ADMINS = ['you@example.com']
+## These two are for reporting mechanism, say reporting bug via email.
+
+# Pagination
+POSTS_PER_PAGE = 3
+
+
+
+
+
+
+
+
+
+

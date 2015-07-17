@@ -10,7 +10,8 @@ from flask.ext.openid import OpenID
 # For OpenID
 from config import basedir
 # import base directory from config.py
-
+from config import ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD
+# These are all for mailing (reporting) from config.py
 
 myapp = Flask(__name__) 
 # myapp is an object of class Flask. __name__ is now __main__ ???
@@ -30,6 +31,36 @@ lm.login_view = 'login'
 
 oid = OpenID(myapp, os.path.join(basedir, 'tmp'))
 # The Flask-OpenID extension requires a path to a temp folder where files can be stored.
+
+# Enabling reporting via email.
+if not myapp.debug:
+# Meaning we are in production mode
+    import logging
+    from logging.handlers import SMTPHandler
+    credentials = None
+    if MAIL_USERNAME or MAIL_PASSWORD:
+        credentials = (MAIL_USERNAME, MAIL_PASSWORD)
+    mail_handler = SMTPHandler((MAIL_SERVER, MAIL_PORT), 'no-reply@' + MAIL_SERVER, ADMINS, 'microblog failure', credentials)
+    mail_handler.setLevel(logging.ERROR)
+    myapp.logger.addHandler(mail_handler)
+# We are only enabling the emails when we run without debugging.
+# use "python -m smtpd -n -c DebuggingServer localhost:25" to run a fake email server.
+
+# Enabling logging (for events and bugs)
+if not myapp.debug:
+    import logging
+    from logging.handlers import RotatingFileHandler
+    file_handler = RotatingFileHandler('tmp/microblog.log', 'a', 1 * 1024 * 1024, 10)
+    # Limiting the log to be 1MB.
+
+    file_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
+    # Formatting log.
+
+    myapp.logger.setLevel(logging.INFO)
+    file_handler.setLevel(logging.INFO)
+    myapp.logger.addHandler(file_handler)
+    myapp.logger.info('microblog startup')
+
 
 from app import views
 # This is importing views module (views.py we are gonna write)
