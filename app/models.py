@@ -5,7 +5,16 @@ from app import db
 # Import variable db from app package. (in __init__.py)
 from hashlib import md5
 # For md5 encoding, for user avatar
+from app import myapp
 
+import sys
+
+if sys.version_info >= (3, 0):
+	enable_search = False
+else:
+	enable_search = True
+	import flask.ext.whooshalchemy as whooshalchemy
+# Since Python3 currently has problem with whooshalchemy, we disable full text search.
 
 followers = db.Table('followers',
 	db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
@@ -117,6 +126,9 @@ class User(db.Model):
 
 class Post(db.Model):
 	# Class Post. For posts.
+	__searchable__ = ['body']
+	# An array with all the database fields that will be in the searchable index.
+
 	id = db.Column(db.Integer, primary_key = True)
 	body = db.Column(db.String(140))
 	timestamp = db.Column(db.DateTime)
@@ -126,3 +138,14 @@ class Post(db.Model):
 
 	def __repr__(self):
 		return '<Post %r>' % (self.body)
+
+if enable_search:
+	whooshalchemy.whoosh_index(myapp, Post)
+# whooshalchemy index for searching ???
+
+
+
+
+
+
+

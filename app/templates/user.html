@@ -13,8 +13,10 @@
 			{% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
           	<!-- Display about me -->
 
-          	{% if user.last_seen %}<p><i>Last seen on: {{ user.last_seen }}</i></p>{% endif %}
+          	{% if user.last_seen %}<p><i>Last seen on: {{ momentjs(user.last_seen).calendar() }}</i></p>{% endif %}
           	<!-- Display last seen data -->
+            <!-- Using momentjs to format it -->
+            <!-- What does calendar() do here ??? -->
 
           	<p>{{ user. followers.count() }} followers |
           		{% if user.id == g.user.id %}

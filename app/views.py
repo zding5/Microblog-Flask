@@ -37,6 +37,13 @@ from datetime import datetime
 
 from config import POSTS_PER_PAGE
 
+from forms import SearchForm
+
+from config import MAX_SEARCH_RESULTS
+
+from .emails import follower_notification
+# import follower_notification from emails.py
+
 @myapp.route('/', methods=['GET', 'POST'])
 @myapp.route('/index', methods=['GET', 'POST'])
 
@@ -85,6 +92,9 @@ def before_request():
         db.session.add(g.user)
         db.session.commit()
     # For supporting last seen data functionality
+        
+        g.search_form = SearchForm()
+        # Make search form global, available for all pages.
 
 @myapp.route('/login', methods=['GET', 'POST'])
 # Tell Flask that only GET or POST are accepted
@@ -223,7 +233,9 @@ def follow(nickname):
     db.session.add(u)
     db.session.commit()
     flash('You are now following ' + nickname + '!')
+    follower_notification(user, g.user) # from emails.py
     return redirect(url_for('user', nickname=nickname))
+
 
 @myapp.route('/unfollow/<nickname>')
 @login_required
@@ -245,12 +257,20 @@ def unfollow(nickname):
     return redirect(url_for('user', nickname=nickname))
 
 
+@myapp.route('/search', methods=['POST'])
+@login_required
+def search():
+    if not g.search_form.validate_on_submit():
+        return redirect(url_for('index'))
+    return redirect(url_for('search_results', query=g.search_form.search.data))
+# Just collects the search query from the form and then redirects to another page passing this query as an argument.
+# The reason the search work isn't done directly here is that if a user then hits the refresh button the browser will put up a warning indicating that form data will be resubmitted.
 
-
-
-
-
-
+@myapp.route('/search_results/<query>')
+@login_required
+def search_results(query):
+    results = Post.query.whoosh_search(query, MAX_SEARCH_RESULTS).all()
+    return render_template('search_results.html', query=query, results=results)
 
 
 

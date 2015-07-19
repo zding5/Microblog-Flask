@@ -12,6 +12,9 @@ from config import basedir
 # import base directory from config.py
 from config import ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD
 # These are all for mailing (reporting) from config.py
+from flask.ext.mail import Mail
+
+from .momentjs import momentjs
 
 myapp = Flask(__name__) 
 # myapp is an object of class Flask. __name__ is now __main__ ???
@@ -31,6 +34,12 @@ lm.login_view = 'login'
 
 oid = OpenID(myapp, os.path.join(basedir, 'tmp'))
 # The Flask-OpenID extension requires a path to a temp folder where files can be stored.
+
+mail = Mail(myapp)
+# Mail service object
+
+myapp.jinja_env.globals['momentjs'] = momentjs
+# Tells Jinja2 to expose momentjs class as a global var to all templates.
 
 # Enabling reporting via email.
 if not myapp.debug:

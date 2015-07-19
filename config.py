@@ -26,16 +26,31 @@ SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 # Folder for our migrate data files
 
 ## mail server settings
-MAIL_SERVER = 'localhost'
-MAIL_PORT = 25
-MAIL_USERNAME = None
-MAIL_PASSWORD = None
+MAIL_SERVER = 'smtp.gmail.com'
+MAIL_PORT = 465
+
+# MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+# MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+# Get these from environment vars.
+# Have to set these if on server ???
+
+MAIL_USERNAME = "myblog.ziqiao.ding"
+MAIL_PASSWORD = "abc123456cba"
+
+MAIL_USE_TLS = False
+MAIL_USE_SSL = True
+
 # administrator list
-ADMINS = ['you@example.com']
-## These two are for reporting mechanism, say reporting bug via email.
+ADMINS = ['myblog.ziqiao.ding@gmail.com']
+# Admin email for this site.
+
 
 # Pagination
 POSTS_PER_PAGE = 3
+
+# For full text search
+WHOOSE_BASE = os.path.join(basedir, 'search.db')
+MAX_SEARCH_RESULTS = 50
 
 
 
