@@ -1,6 +1,8 @@
 # A wrapper for momentjs
 # Easy for us to change the way we render timestamps
 
+### Are we able to solve the different location problem with this ???
+
 from jinja2 import Markup
 
 class momentjs(object):

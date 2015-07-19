@@ -15,6 +15,10 @@ from config import ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD
 from flask.ext.mail import Mail
 
 from .momentjs import momentjs
+# For Dates and Times supports
+
+from flask.ext.babel import Babel
+# For language supports
 
 myapp = Flask(__name__) 
 # myapp is an object of class Flask. __name__ is now __main__ ???
@@ -40,6 +44,9 @@ mail = Mail(myapp)
 
 myapp.jinja_env.globals['momentjs'] = momentjs
 # Tells Jinja2 to expose momentjs class as a global var to all templates.
+
+babel = Babel(myapp)
+# Lang support object.
 
 # Enabling reporting via email.
 if not myapp.debug:

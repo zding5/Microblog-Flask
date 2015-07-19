@@ -1,0 +1,18 @@
+
+
+-- Date and Time. 
+	
+	- Did we solve the problems with different time zones ???
+
+	- How ???
+	
+	- I though it was just formatting that we have now ???
+
+
+-- Lang
+	
+	- What is Accept-Languages header ???
+
+	- Is there a comment sign for babel file ???
+
+	- Why can we use _() as a shorter alias for babel.gettext ??? 

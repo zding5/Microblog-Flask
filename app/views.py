@@ -44,6 +44,14 @@ from config import MAX_SEARCH_RESULTS
 from .emails import follower_notification
 # import follower_notification from emails.py
 
+from app import babel
+from config import LANGUAGES
+# lang supports
+
+from flask.ext.babel import gettext
+# This is for translating strings for different langs
+# We need to use gettext() to mark out all texts we want to be translated, or use _() as a shorter alias. Why ??? 
+
 @myapp.route('/', methods=['GET', 'POST'])
 @myapp.route('/index', methods=['GET', 'POST'])
 
@@ -59,7 +67,7 @@ def index(page=1):# page by default is set to 1.
         post = Post(body=form.post.data, timestamp=datetime.utcnow(), author=g.user)
         db.session.add(post)
         db.session.commit()
-        flash('Your post is now live!')
+        flash(gettext('Your post is now live!'))
         return redirect(url_for('index'))
         # Force redirct instead of just let it go to render the same index page.
         # This is for when user refresh the page.
@@ -130,14 +138,14 @@ def login():
 def after_login(resp):
     # resp contains information returned by the OpenID provider.
     if resp.email is None or resp.email == "":
-        flash('Invalid login. Please try again.')
+        flash(gettext('Invalid login. Please try again.'))
         return redirect(url_for('login'))
     # Validation
 
     user = User.query.filter_by(email=resp.email).first()
     if user is None:
     # Create new user if it doesn't exist.
-        flash('Good, a user!')
+        # flash('Good, a user!') #
         nickname = resp.nickname
         if nickname is None or nickname == "":
             nickname = resp.email.split('@')[0]
@@ -177,7 +185,7 @@ def logout():
 def user(nickname, page=1):
     user = User.query.filter_by(nickname=nickname).first()
     if user == None:
-        flash('User %s not found.' % nickname)
+        flash(gettext('User %(nickname)s not found.', nickname=nickname)) ### right ???
         return redirect(url_for('index'))
     posts = user.posts.paginate(page, POSTS_PER_PAGE, False)
     return render_template('user.html', user=user, posts=posts)
@@ -273,7 +281,9 @@ def search_results(query):
     return render_template('search_results.html', query=query, results=results)
 
 
-
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(LANGUAGES.keys())
 
 
 

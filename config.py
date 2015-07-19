@@ -1,4 +1,8 @@
+# _*_ coding: utf-8 _*_
+## This is for unicode support !!!
+
 # This file is for configurations
+
 
 # When you use this in a new environment, the config
 # will adapt to the new environment, so you don't
@@ -52,9 +56,15 @@ POSTS_PER_PAGE = 3
 WHOOSE_BASE = os.path.join(basedir, 'search.db')
 MAX_SEARCH_RESULTS = 50
 
+# For language supports
+LANGUAGES = {
+	'en': 'English',
+	'es': 'Español',
+	'sch': '简体中文',
+	'tch': '繁體中文',
+}
 
-
-
+# Supporing ñ because we specified '# _*_ coding: utf-8 _*_' on the top !!!
 
 
 
