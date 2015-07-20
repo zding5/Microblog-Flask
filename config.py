@@ -60,9 +60,11 @@ MAX_SEARCH_RESULTS = 50
 LANGUAGES = {
 	'en': 'English',
 	'es': 'Español',
-	'sch': '简体中文',
-	'tch': '繁體中文',
+	'zh_CN': '简体中文',
+	'zh_TW': '繁體中文'
 }
+
+BABEL_DEFAULT_LOCALE = 'zh_CN'
 
 # Supporing ñ because we specified '# _*_ coding: utf-8 _*_' on the top !!!
 

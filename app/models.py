@@ -16,6 +16,9 @@ else:
 	import flask.ext.whooshalchemy as whooshalchemy
 # Since Python3 currently has problem with whooshalchemy, we disable full text search.
 
+import re
+# Regular Expression class.
+
 followers = db.Table('followers',
 	db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
 	db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
@@ -28,7 +31,8 @@ class User(db.Model):
 	nickname = db.Column(db.String(64), index=True, unique=True)
 	email = db.Column(db.String(120), index=True, unique=True)
 	# Fields of class User
-	posts = db.relationship('Post', backref='author', lazy='dynamic')
+	posts = db.relationship('Post', backref='author', lazy='dynamic', order_by="Post.timestamp.desc()")
+	# Remember to add the order !!!
 	# Not a real field in the database diagram
 	# For a one-to-many relationship a db.relationship field is normally defined on the "one" side.
 	# 'Post': the 'many class'
@@ -122,6 +126,11 @@ class User(db.Model):
 		# Join the post table and followers table with post's user_id as user being followed.
 		# Filter out posts whose follower is this user.
 		# Order them by newest to oldest.
+
+	@staticmethod
+	def make_valid_nickname(nickname):
+		return re.sub('[^a-zA-Z0-9_\.]', '', nickname)
+	# Make sure nickname only contains certain chars.
 
 
 class Post(db.Model):

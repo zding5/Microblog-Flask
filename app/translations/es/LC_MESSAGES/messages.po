@@ -1,0 +1,151 @@
+# Spanish translations for PROJECT.
+# Copyright (C) 2015 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2015-07-19 17:15-0500\n"
+"PO-Revision-Date: 2015-07-19 23:07-0500\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+"Last-Translator: \n"
+"Language: es\n"
+"X-Generator: Poedit 1.8.2\n"
+
+#: app/forms.py:39
+msgid ""
+"This nickname has invalid characters. Please use letters, numbers, dots "
+"and underscores only."
+msgstr ""
+"Este apodo tiene caracteres no válidos. Utilice letras, números, puntos "
+"y guiones bajos solamente."
+
+#: app/views.py:70
+msgid "Your post is now live!"
+msgstr "Tu entrada está ahora en vivo!"
+
+#: app/views.py:141
+msgid "Invalid login. Please try again."
+msgstr "Inicio de sesión no válido. Por favor, inténtelo de nuevo."
+
+#: app/views.py:190 app/views.py:234 app/views.py:255
+#, python-format
+msgid "User %(nickname)s not found."
+msgstr "Usuario %(nickname)s no encontrado."
+
+#: app/views.py:208
+msgid "Your changes have been saved."
+msgstr "Se han guardado los cambios."
+
+#: app/views.py:237
+msgid "You can't follow yourself!"
+msgstr "No siga usted mismo!"
+
+#: app/views.py:241
+#, python-format
+msgid "Cannot follow %(nickname)s"
+msgstr "No se puede seguir %(nickname)s."
+
+#: app/views.py:245
+#, python-format
+msgid "You are now following %(nickname)s"
+msgstr "Ahora sigues %(nickname)s!"
+
+#: app/views.py:258
+msgid "You can't unfollow yourself!"
+msgstr "No se puede dejar de seguir a ti mismo!"
+
+#: app/views.py:262
+#, python-format
+msgid "Cannot unfollow%(nickname)s"
+msgstr "No puedes dejar de seguir %(nickname)s."
+
+#: app/views.py:266
+#, python-format
+msgid "You have stopped following %(nickname)s"
+msgstr ""
+
+#: app/templates/base.html:28
+msgid "Home"
+msgstr ""
+
+#: app/templates/base.html:30
+msgid "Your Profile"
+msgstr ""
+
+#: app/templates/base.html:42
+msgid "Logout"
+msgstr ""
+
+#: app/templates/edit.html:7
+msgid "Edit Your Profile"
+msgstr ""
+
+#: app/templates/edit.html:12
+msgid "Your nickname:"
+msgstr ""
+
+#: app/templates/edit.html:19 app/templates/index.html:14
+#, python-format
+msgid "%(err)s"
+msgstr ""
+
+#: app/templates/edit.html:25
+msgid "About yourself:"
+msgstr ""
+
+#: app/templates/edit.html:30
+msgid "Save Changes"
+msgstr ""
+
+#: app/templates/index.html:5
+#, python-format
+msgid "Hi, %(nickname)s!"
+msgstr ""
+
+#: app/templates/index.html:10
+msgid "Say something:"
+msgstr ""
+
+#: app/templates/index.html:20
+msgid "Post!"
+msgstr ""
+
+#: app/templates/index.html:34 app/templates/index.html:35
+#: app/templates/user.html:55 app/templates/user.html:57
+msgid "Newer posts"
+msgstr ""
+
+#: app/templates/index.html:39 app/templates/index.html:40
+#: app/templates/user.html:61 app/templates/user.html:64
+msgid "Older posts"
+msgstr ""
+
+#: app/templates/post.html:11
+#, python-format
+msgid "%(nickname)s said %(when)s:"
+msgstr ""
+
+#: app/templates/user.html:19
+#, python-format
+msgid " Last seen on: %(when)s"
+msgstr ""
+
+#: app/templates/user.html:28
+msgid "Edit your profile"
+msgstr ""
+
+#: app/templates/user.html:32
+msgid "Follow"
+msgstr ""
+
+#: app/templates/user.html:36
+msgid "Unfollow"
+msgstr ""

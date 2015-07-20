@@ -149,6 +149,7 @@ def after_login(resp):
         nickname = resp.nickname
         if nickname is None or nickname == "":
             nickname = resp.email.split('@')[0]
+        nickname = User.make_valid_nickname(nickname)
         nickname = User.make_unique_nickname(nickname)
         # This is for solving duplicate nickname issue !!!
         # We now let user pick a unique nickname.
@@ -180,6 +181,7 @@ def logout():
 
 
 @myapp.route('/user/<nickname>')
+@myapp.route('/user/<nickname>/<int:page>')
 @login_required
 # For certain user personal page.
 def user(nickname, page=1):
@@ -203,7 +205,7 @@ def edit():
         g.user.about_me = form.about_me.data
         db.session.add(g.user)
         db.session.commit()
-        flash('Your changes have been saved.')
+        flash(gettext('Your changes have been saved.'))
         return redirect(url_for('edit'))
     else:
     # When would validate fail ???
@@ -229,18 +231,18 @@ def not_found_error(error):
 def follow(nickname):
     user = User.query.filter_by(nickname = nickname).first()
     if user is None:
-        flash('User %s not found.' % nickname)
+        flash(gettext('User %(nickname)s not found.', nickname=nickname))
         return redirect(url_for('index'))
     if user == g.user:
-        flash('You can\'t follow yourself!')
+        flash(gettext('You can\'t follow yourself!'))
         return redirect(url_for('user', nickname=nickname))
     u = g.user.follow(user)
     if u is None:
-        flash('Cannot follow ' + nickname + '.')
+        flash(gettext('Cannot follow ' + '%(nickname)s',nickname=nickname + '.'))
         return redirect(url_for('user', nickname=nickname))
     db.session.add(u)
     db.session.commit()
-    flash('You are now following ' + nickname + '!')
+    flash(gettext('You are now following ' + '%(nickname)s',nickname=nickname + '!' ))
     follower_notification(user, g.user) # from emails.py
     return redirect(url_for('user', nickname=nickname))
 
@@ -250,18 +252,18 @@ def follow(nickname):
 def unfollow(nickname):
     user = User.query.filter_by(nickname=nickname).first()
     if user is None:
-        flash('User %s not found.' % nickname)
+        flash(gettext('User %(nickname)s not found.', nickname=nickname))
         return redirect(url_for('index'))
     if user == g.user:
-        flash('You can\'t unfollow yourself!')
+        flash(gettext('You can\'t unfollow yourself!'))
         return redirect(url_for('user', nickname=nickname))
     u = g.user.unfollow(user)
     if u is None:
-        flash('Cannot unfollow' + nickname + '.')
+        flash(gettext('Cannot unfollow' + '%(nickname)s', nickname=nickname + '.'))
         return redirect(url_for('user', nickname=nickname))
     db.session.add(u)
     db.session.commit()
-    flash('You have stopped following ' + nickname + '.')
+    flash(gettext('You have stopped following ' + '%(nickname)s',nickname=nickname + '.'))
     return redirect(url_for('user', nickname=nickname))
 
 
@@ -283,9 +285,10 @@ def search_results(query):
 
 @babel.localeselector
 def get_locale():
-    return request.accept_languages.best_match(LANGUAGES.keys())
-
-
+    # return request.accept_languages.best_match(LANGUAGES.keys())
+    # ???
+    print "here?"
+    return 'zh_CN'
 
 
 

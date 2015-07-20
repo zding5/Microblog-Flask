@@ -16,3 +16,7 @@
 	- Is there a comment sign for babel file ???
 
 	- Why can we use _() as a shorter alias for babel.gettext ??? 
+
+	- Can't the user choose lang him/herself ???
+
+	- How to change (or do we need to change) the pr in js func in login.html

@@ -13,22 +13,27 @@
 			{% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
           	<!-- Display about me -->
 
-          	{% if user.last_seen %}<p><i>Last seen on: {{ momentjs(user.last_seen).calendar() }}</i></p>{% endif %}
+          	{% if user.last_seen %}
+            <p>
+              <i>
+                {{ _(' Last seen on: %(when)s', when=momentjs(user.last_seen).calendar()) }}
+              </i>
+            </p>{% endif %}
           	<!-- Display last seen data -->
             <!-- Using momentjs to format it -->
             <!-- What does calendar() do here ??? -->
 
           	<p>{{ user. followers.count() }} followers |
           		{% if user.id == g.user.id %}
-          			<a href="{{ url_for('edit') }}">Edit your profile</a>
+          			<a href="{{ url_for('edit') }}">{{ _('Edit your profile') }}</a>
             	<!-- Only able to change about me when you are viewing your own page/profile -->
           		
           		{% elif not g.user.is_following(user) %}
-          			<a href="{{ url_for('follow', nickname=user.nickname) }}">Follow</a>
+          			<a href="{{ url_for('follow', nickname=user.nickname) }}">{{ _('Follow') }}</a>
           		<!--  -->
 
           		{% else %}
-          			<a href="{{ url_for('unfollow', nickname=user.nickname) }}">Unfollow</a>
+          			<a href="{{ url_for('unfollow', nickname=user.nickname) }}">{{ _('Unfollow') }}</a>
           		{% endif %}
           	</p>
 
@@ -47,12 +52,15 @@
   {% endfor %}
 
   {% if posts.has_prev %}
-    <a href="{{ url_for('user', nickname=user.nickname, page=posts.prev_num) }}">&lt;&lt; Newer posts</a>
-  {% else %}&lt;&lt; Newer posts{% endif %} | 
+    <a href="{{ url_for('user', nickname=user.nickname, page=posts.prev_num) }}">&lt;&lt; {{ _('Newer posts') }}</a>
+  {% else %}
+  &lt;&lt; {{ _('Newer posts') }}
+  {% endif %} | 
   
   {% if posts.has_next %}
-    <a href="{{ url_for('user', nickname=user.nickname, page=posts.next_num) }}">Older posts &gt;&gt;
+    <a href="{{ url_for('user', nickname=user.nickname, page=posts.next_num) }}">{{ _('Older posts') }} &gt;&gt;
     </a>
-  {% else %}Older posts &gt;&gt;
+  {% else %}
+  {{ _('Older posts') }} &gt;&gt;
   {% endif %}
 {% endblock %}

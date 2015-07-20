@@ -25,9 +25,9 @@
   </head>
   <body>
     <div>Microblog:
-      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('index') }}">{{ _('Home') }}</a>
       {% if g.user.is_authenticated() %}
-      | <a href="{{ url_for('user', nickname=g.user.nickname) }}">Your Profile</a>
+      | <a href="{{ url_for('user', nickname=g.user.nickname) }}">{{ _('Your Profile') }}</a>
       <!-- To go to user's page -->
 
       | <form style="display: inline;" action="{{ url_for('search') }}" method="post" name="search">
@@ -39,7 +39,7 @@
       </form>
       <!-- Searching Form -->
 
-      | <a href="{{url_for('logout')}}">Logout</a>
+      | <a href="{{url_for('logout')}}">{{ _('Logout') }}</a>
       {% endif %}
     </div>
       
