@@ -1,164 +1,149 @@
-# Translations template for PROJECT.
+# Chinese (Simplified, China) translations for PROJECT.
 # Copyright (C) 2015 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-07-20 22:23-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2015-07-20 20:53-0500\n"
+"PO-Revision-Date: 2015-07-19 22:32-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: zh_Hans_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: app/forms.py:41
+#: app/forms.py:39
 msgid ""
 "This nickname has invalid characters. Please use letters, numbers, dots "
 "and underscores only."
-msgstr ""
-
-#: app/forms.py:47
-msgid "This nickname is already in use. Please choose another one."
-msgstr ""
+msgstr "你傻逼吗？起名字只能用字母、数字、点"
+"以及下划线。"
 
 #: app/views.py:70
 msgid "Your post is now live!"
-msgstr ""
+msgstr "行了，你说的话大家都看得到了。"
 
 #: app/views.py:142
 msgid "Invalid login. Please try again."
-msgstr ""
+msgstr "猪啊！登录错误了，重新来！"
 
 #: app/views.py:191 app/views.py:235 app/views.py:256
 #, python-format
 msgid "User %(nickname)s not found."
-msgstr ""
+msgstr "%(nickname)s？哪有这个人啊，你傻啊？"
 
 #: app/views.py:209
 msgid "Your changes have been saved."
-msgstr ""
+msgstr "存好啦。"
 
 #: app/views.py:238
 msgid "You can't follow yourself!"
-msgstr ""
+msgstr "你是不是太寂寞只能自己关注自己？"
 
 #: app/views.py:242
 #, python-format
 msgid "Cannot follow %(nickname)s"
-msgstr ""
+msgstr "你关注不了%(nickname)s。"
 
 #: app/views.py:246
 #, python-format
 msgid "You are now following %(nickname)s"
-msgstr ""
+msgstr "你已经盯上%(nickname)s了"
 
 #: app/views.py:259
 msgid "You can't unfollow yourself!"
-msgstr ""
+msgstr "你连你自己也不关注了吗？"
 
 #: app/views.py:263
 #, python-format
 msgid "Cannot unfollow%(nickname)s"
-msgstr ""
+msgstr "不能不关注%(nickname)s"
 
 #: app/views.py:267
 #, python-format
 msgid "You have stopped following %(nickname)s"
-msgstr ""
+msgstr "你终于不瞧%(nickname)s了。"
 
 #: app/templates/base.html:28
 msgid "Home"
-msgstr ""
+msgstr "猪窝"
 
 #: app/templates/base.html:30
 msgid "Your Profile"
-msgstr ""
+msgstr "猪头介绍"
 
 #: app/templates/base.html:42
 msgid "Logout"
-msgstr ""
+msgstr "离开猪窝"
 
 #: app/templates/edit.html:7
 msgid "Edit Your Profile"
-msgstr ""
+msgstr "编辑猪头"
 
 #: app/templates/edit.html:12
 msgid "Your nickname:"
-msgstr ""
+msgstr "你的猪名"
 
 #: app/templates/edit.html:19 app/templates/index.html:14
 #, python-format
 msgid "%(err)s"
-msgstr ""
+msgstr "%(err)s"
 
 #: app/templates/edit.html:25
 msgid "About yourself:"
-msgstr ""
+msgstr "关于你这只猪："
 
 #: app/templates/edit.html:30
 msgid "Save Changes"
-msgstr ""
+msgstr "存了"
 
 #: app/templates/index.html:5
 #, python-format
 msgid "Hi, %(nickname)s!"
-msgstr ""
+msgstr "喂，%(nickname)s"
 
 #: app/templates/index.html:10
 msgid "Say something:"
-msgstr ""
+msgstr "哼一哼吧："
 
 #: app/templates/index.html:20
 msgid "Post!"
-msgstr ""
+msgstr "哼！"
 
 #: app/templates/index.html:34 app/templates/index.html:35
 #: app/templates/user.html:55 app/templates/user.html:57
 msgid "Newer posts"
-msgstr ""
+msgstr "新一些的废话"
 
 #: app/templates/index.html:39 app/templates/index.html:40
 #: app/templates/user.html:61 app/templates/user.html:64
 msgid "Older posts"
-msgstr ""
-
-#: app/templates/login.html:23 app/templates/login.html:42
-msgid "Sign In"
-msgstr ""
-
-#: app/templates/login.html:28
-msgid "Please enter your OpenID, or select one of the providers below:"
-msgstr ""
-
-#: app/templates/login.html:41
-msgid "Remember Me"
-msgstr ""
+msgstr "旧一些的废话"
 
 #: app/templates/post.html:11
 #, python-format
 msgid "%(nickname)s said %(when)s:"
-msgstr ""
+msgstr "%(nickname)s %(when)s 说了："
 
 #: app/templates/user.html:19
 #, python-format
 msgid " Last seen on: %(when)s"
-msgstr ""
+msgstr "最后被瞧：%(when)s"
 
 #: app/templates/user.html:28
 msgid "Edit your profile"
-msgstr ""
+msgstr "编辑猪介绍"
 
 #: app/templates/user.html:32
 msgid "Follow"
-msgstr ""
+msgstr "关注"
 
 #: app/templates/user.html:36
 msgid "Unfollow"
-msgstr ""
+msgstr "不关注"
 

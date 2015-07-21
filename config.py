@@ -60,8 +60,7 @@ MAX_SEARCH_RESULTS = 50
 LANGUAGES = {
 	'en': 'English',
 	'es': 'Español',
-	'zh_CN': '简体中文',
-	'zh_TW': '繁體中文'
+	'zh': '中文'
 }
 
 BABEL_DEFAULT_LOCALE = 'zh_CN'

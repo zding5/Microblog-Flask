@@ -1,73 +1,76 @@
 # Chinese (Simplified, China) translations for PROJECT.
-# Copyright (C) 2015 ORGANIZATION
+# Copyright (C) 2013 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-07-19 17:15-0500\n"
-"PO-Revision-Date: 2015-07-19 22:32-0500\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: zh_Hans_CN <LL@li.org>\n"
+"POT-Creation-Date: 2015-07-20 22:23-0500\n"
+"PO-Revision-Date: 2013-01-31 23:19-0800\n"
+"Last-Translator: Miguel Grinberg <miguel.grinberg@gmail.com>\n"
+"Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: app/forms.py:39
+#: app/forms.py:41
 msgid ""
 "This nickname has invalid characters. Please use letters, numbers, dots "
 "and underscores only."
-msgstr "你傻逼吗？起名字只能用字母、数字、点以及下划线。"
+msgstr "猪啊，用户名要用字母、数字、点或者下划线才行啊！"
+
+#: app/forms.py:47
+msgid "This nickname is already in use. Please choose another one."
+msgstr ""
 
 #: app/views.py:70
 msgid "Your post is now live!"
-msgstr "行了，你说的话大家都看得到了。"
+msgstr "帖子发啦，别得瑟了！"
 
-#: app/views.py:141
+#: app/views.py:142
 msgid "Invalid login. Please try again."
-msgstr "猪啊！登录错误了，重新来！"
+msgstr "我说你脑子进水了吧，自己登陆都记错了。"
 
-#: app/views.py:190 app/views.py:234 app/views.py:255
+#: app/views.py:191 app/views.py:235 app/views.py:256
 #, python-format
 msgid "User %(nickname)s not found."
-msgstr "%(nickname)s？哪有这个人啊，你傻啊？"
+msgstr "%(nickname)s？这谁啊？"
 
-#: app/views.py:208
+#: app/views.py:209
 msgid "Your changes have been saved."
-msgstr "存好啦。"
+msgstr "好啦，知道了。"
 
-#: app/views.py:237
+#: app/views.py:238
 msgid "You can't follow yourself!"
-msgstr "你是不是太寂寞只能自己关注自己？"
+msgstr "你是太寂寞要关注你自己吗？"
 
-#: app/views.py:241
-#, python-format
+#: app/views.py:242
+#, fuzzy, python-format
 msgid "Cannot follow %(nickname)s"
-msgstr "你关注不了%(nickname)s。"
+msgstr "不能关注 %(nickname)s 你惹人家了吧。"
 
-#: app/views.py:245
-#, python-format
+#: app/views.py:246
+#, fuzzy, python-format
 msgid "You are now following %(nickname)s"
-msgstr "你已经盯上%(nickname)s了"
+msgstr "你在偷看 %(nickname)s!"
 
-#: app/views.py:258
+#: app/views.py:259
 msgid "You can't unfollow yourself!"
-msgstr "你连你自己也不关注了吗？"
+msgstr "你连自己也不关注了吗？"
 
-#: app/views.py:262
-#, python-format
+#: app/views.py:263
+#, fuzzy, python-format
 msgid "Cannot unfollow%(nickname)s"
-msgstr "不能不关注%(nickname)s"
+msgstr "不能偷看 %(nickname)s 。"
 
-#: app/views.py:266
-#, python-format
+#: app/views.py:267
+#, fuzzy, python-format
 msgid "You have stopped following %(nickname)s"
-msgstr "你终于不瞧%(nickname)s了。"
+msgstr "你终于看够 %(nickname)s 了"
 
 #: app/templates/base.html:28
 msgid "Home"
@@ -75,45 +78,45 @@ msgstr "猪窝"
 
 #: app/templates/base.html:30
 msgid "Your Profile"
-msgstr "猪头介绍"
+msgstr "猪档案"
 
 #: app/templates/base.html:42
 msgid "Logout"
-msgstr "离开猪窝"
+msgstr "滚出猪窝"
 
 #: app/templates/edit.html:7
 msgid "Edit Your Profile"
-msgstr "编辑猪头"
+msgstr "编辑猪档案"
 
 #: app/templates/edit.html:12
 msgid "Your nickname:"
-msgstr "你的猪名"
+msgstr "你的猪名:"
 
 #: app/templates/edit.html:19 app/templates/index.html:14
 #, python-format
 msgid "%(err)s"
-msgstr "%(err)s"
+msgstr ""
 
 #: app/templates/edit.html:25
 msgid "About yourself:"
-msgstr "关于你这只猪："
+msgstr "关于你这只猪:"
 
 #: app/templates/edit.html:30
 msgid "Save Changes"
-msgstr "存了"
+msgstr "存变化"
 
 #: app/templates/index.html:5
 #, python-format
 msgid "Hi, %(nickname)s!"
-msgstr "喂，%(nickname)s"
+msgstr "喂, %(nickname)s!"
 
 #: app/templates/index.html:10
 msgid "Say something:"
-msgstr "哼一哼吧："
+msgstr "哼一声吧:"
 
 #: app/templates/index.html:20
 msgid "Post!"
-msgstr "哼！"
+msgstr "哼!"
 
 #: app/templates/index.html:34 app/templates/index.html:35
 #: app/templates/user.html:55 app/templates/user.html:57
@@ -125,25 +128,94 @@ msgstr "新一些的废话"
 msgid "Older posts"
 msgstr "旧一些的废话"
 
+#: app/templates/login.html:23 app/templates/login.html:42
+msgid "Sign In"
+msgstr ""
+
+#: app/templates/login.html:28
+msgid "Please enter your OpenID, or select one of the providers below:"
+msgstr ""
+
+#: app/templates/login.html:41
+msgid "Remember Me"
+msgstr ""
+
 #: app/templates/post.html:11
 #, python-format
 msgid "%(nickname)s said %(when)s:"
-msgstr "%(nickname)s %(when)s 说了："
+msgstr "%(nickname)s %(when)s 说:"
 
 #: app/templates/user.html:19
 #, python-format
 msgid " Last seen on: %(when)s"
-msgstr "最后被瞧：%(when)s"
+msgstr ""
 
 #: app/templates/user.html:28
 msgid "Edit your profile"
-msgstr "编辑猪介绍"
+msgstr "编辑猪档案"
 
 #: app/templates/user.html:32
 msgid "Follow"
-msgstr "关注"
+msgstr "跟！"
 
 #: app/templates/user.html:36
 msgid "Unfollow"
-msgstr "不关注"
+msgstr "不跟！"
+
+#~ msgid "Please log in to access this page."
+#~ msgstr "傻逼登陆啊！"
+
+#~ msgid "This nickname is already in use. Please choose another one."
+#~ msgstr "这个名字有人用了。有点创意行吗？"
+
+#~ msgid "File Not Found"
+#~ msgstr "没有这东西"
+
+#~ msgid "Back"
+#~ msgstr "往回滚"
+
+#~ msgid "An unexpected error has occurred"
+#~ msgstr "卧槽！！！出事儿了！"
+
+#~ msgid "The administrator has been notified. Sorry for the inconvenience!"
+#~ msgstr "我已经知道有问题了，别逼逼了行吗？"
+
+#~ msgid "Search"
+#~ msgstr "拱啊拱，找啊找"
+
+#~ msgid "%(nickname)s is now a follower."
+#~ msgstr "%(nickname)s 跟着你了。"
+
+#~ msgid "Regards,"
+#~ msgstr "向你妈问好"
+
+#~ msgid "The <code>microblog</code> admin"
+#~ msgstr "<code>microblog</code> 管理员"
+
+#~ msgid "Please Sign In"
+#~ msgstr "登录猪窝"
+
+#~ msgid "Click on your OpenID provider below:"
+#~ msgstr "用 OpenID 登录:"
+
+#~ msgid "Or enter your OpenID here:"
+#~ msgstr "或者输入 OpenID:"
+
+#~ msgid "Remember Me"
+#~ msgstr "记住我！"
+
+#~ msgid "Sign In"
+#~ msgstr "进猪窝"
+
+#~ msgid "Search results for \"%(query)s\":"
+#~ msgstr "找到了 \"%(query)s\":"
+
+#~ msgid "Last seen:"
+#~ msgstr "最后一次被瞧:"
+
+#~ msgid "Followers:"
+#~ msgstr "瞧你的人:"
+
+#~ msgid "Following:"
+#~ msgstr "被你瞧的人:"
 

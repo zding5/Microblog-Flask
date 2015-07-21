@@ -103,6 +103,7 @@ def before_request():
         
         g.search_form = SearchForm()
         # Make search form global, available for all pages.
+    g.locale = get_locale()
 
 @myapp.route('/login', methods=['GET', 'POST'])
 # Tell Flask that only GET or POST are accepted
@@ -287,8 +288,7 @@ def search_results(query):
 def get_locale():
     # return request.accept_languages.best_match(LANGUAGES.keys())
     # ???
-    print "here?"
-    return 'zh_CN'
+    return 'en'
 
 
 
